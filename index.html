@@ -961,7 +961,6 @@ button[onclick="resetPoster()"]{display:inline-flex !important; align-items:cent
 @media(min-width:360px) and (max-width:559px){.topbar{grid-template-columns:repeat(3,minmax(0,1fr))!important;border-radius:0 0 18px 18px!important}.topbar button{height:40px!important}}
 @media(max-width:359px){.topbar{grid-template-columns:repeat(2,minmax(0,1fr))!important;border-radius:0 0 16px 16px!important}.topbar button{height:38px!important}}
 /* 안내사항 모드에서도 날짜 영역이 문구에 가려지지 않도록 분리 */
-  <button class="headerDateButton" onclick="dateMenu(this,event)">날짜 생성</button>
 #poster.noticeMode .dateZone{display:flex!important;top:194px!important;z-index:8!important}
 #poster.noticeMode .event1Zone{top:248px!important;height:110px!important}
 #poster.noticeMode .event2Zone{top:370px!important;height:120px!important}
@@ -974,6 +973,7 @@ button[onclick="resetPoster()"]{display:inline-flex !important; align-items:cent
   <button onclick="historyUndo()" id="historyUndoBtn" title="실행취소 (Ctrl+Z)" disabled>↶ 실행취소</button>
   <button onclick="openTutorial()">사용법</button>
   <button onclick="openPromoMenu(this)">POP</button>
+  <button class="headerDateButton" onclick="dateMenu(this,event)">날짜 생성</button>
 <button onclick="openRecommendMenu(this)">문구추천</button>
 <button class="download" onclick="openExportMenu(this)">내보내기</button>
   <button onclick="resetPoster()">초기화</button>
