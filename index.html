@@ -51,6 +51,18 @@ button{font-family:GmarketBoldPOP;cursor:pointer}
 .menuRow{display:grid;gap:8px}
 .menuRow button,.menuRow input{height:38px;border:1px solid #ddd;border-radius:8px;padding:0 8px;font-family:GmarketMediumPOP;font-size:16px;background:#fff}
 .menuRow button{font-family:GmarketBoldPOP;background:#f6bf00;border:0}
+.dateMenu{min-width:340px;padding:14px;background:rgba(255,255,255,.96);border:1px solid rgba(0,0,0,.08);border-radius:20px;box-shadow:0 18px 50px rgba(0,0,0,.2);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.dateMenuHeader{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:14px}
+.dateMenuHeader .menuTitle{margin:0;font-size:14px;letter-spacing:-.2px}
+.dateMenu .dateFields{display:grid;grid-template-columns:64px minmax(0,1fr);align-items:center;gap:10px 12px}
+.dateMenu .dateFields label{font-family:GmarketMediumPOP;font-size:13px;color:#6e6e73}
+.dateMenu .dateFields input{width:100%;height:42px;padding:0 12px;border:0;border-radius:12px;background:#f2f2f7;color:#1d1d1f;font-size:15px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.04)}
+.dateMenu button{height:36px;padding:0 15px;border:0;border-radius:999px;font-family:GmarketBoldPOP;font-size:13px;cursor:pointer;transition:transform .14s ease,filter .14s ease}
+.dateMenu button:hover{filter:brightness(.96)}
+.dateMenu button:active{transform:scale(.96)}
+.dateMenuApply{flex:0 0 auto;background:#007aff!important;color:#fff;box-shadow:0 4px 12px rgba(0,122,255,.24)}
+.dateMenuRemove{width:100%;margin-top:12px;background:#fff0f0!important;color:#ff3b30}
+@media(max-width:760px){.dateMenu{min-width:0;padding:14px!important;border-radius:20px!important}.dateMenuHeader{position:sticky;top:0;z-index:1;padding-bottom:2px;background:rgba(255,255,255,.96)}.dateMenuApply{height:38px!important}}
 .help{position:fixed;left:16px;bottom:16px;background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:10px 12px;box-shadow:0 8px 22px rgba(0,0,0,.12);font-size:12px;line-height:1.6;color:#555;z-index:40}
 @media(max-width:760px){
   html,body{width:100%;max-width:100%;overflow-x:hidden}
@@ -934,6 +946,26 @@ button[onclick="resetPoster()"]{display:inline-flex !important; align-items:cent
 @media(min-width:560px){.topbar{grid-template-columns:repeat(6,minmax(0,1fr))!important;}.topbar button{font-size:13px!important;}}
 @media(min-width:360px) and (max-width:559px){.topbar{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:6px!important;padding:7px!important;}.topbar button{height:38px!important;font-size:13px!important;}}
 @media(max-width:359px){.topbar{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:5px!important;padding:6px!important;}.topbar button{height:37px!important;font-size:12px!important;}}
+/* Apple-inspired header controls */
+.topbar{grid-template-columns:repeat(7,minmax(0,1fr))!important;padding:10px!important;background:rgba(255,255,255,.82)!important;border:1px solid rgba(0,0,0,.06)!important;border-radius:18px!important;box-shadow:0 10px 30px rgba(0,0,0,.1)!important;backdrop-filter:blur(22px) saturate(180%)!important;-webkit-backdrop-filter:blur(22px) saturate(180%)!important;overflow:visible!important}
+.topbar button{height:42px!important;border:1px solid rgba(0,0,0,.06)!important;border-radius:13px!important;background:#f5f5f7!important;color:#1d1d1f!important;font-family:GmarketBoldPOP!important;font-size:13px!important;box-shadow:0 1px 2px rgba(0,0,0,.04)!important;transition:transform .14s ease,background .14s ease,box-shadow .14s ease!important}
+.topbar button:hover:not(:disabled){background:#ebebf0!important;box-shadow:0 4px 12px rgba(0,0,0,.1)!important;transform:translateY(-1px)}
+.topbar button:active:not(:disabled){transform:scale(.97)}
+.topbar button:disabled{opacity:.38!important;cursor:not-allowed!important}
+.topbar .headerDateButton{background:#e8f2ff!important;color:#007aff!important;border-color:rgba(0,122,255,.12)!important}
+.topbar .headerDateButton:hover{background:#dcecff!important}
+.topbar .download{background:#007aff!important;color:#fff!important;border-color:#007aff!important;box-shadow:0 5px 14px rgba(0,122,255,.25)!important}
+.topbar .download:hover{background:#0674e7!important}
+.topbar button[onclick="resetPoster()"]{background:#fff1f0!important;color:#ff3b30!important;border-color:rgba(255,59,48,.12)!important}
+@media(min-width:560px){.topbar{grid-template-columns:repeat(7,minmax(0,1fr))!important}}
+@media(min-width:360px) and (max-width:559px){.topbar{grid-template-columns:repeat(3,minmax(0,1fr))!important;border-radius:0 0 18px 18px!important}.topbar button{height:40px!important}}
+@media(max-width:359px){.topbar{grid-template-columns:repeat(2,minmax(0,1fr))!important;border-radius:0 0 16px 16px!important}.topbar button{height:38px!important}}
+/* 안내사항 모드에서도 날짜 영역이 문구에 가려지지 않도록 분리 */
+  <button class="headerDateButton" onclick="dateMenu(this,event)">날짜 적용</button>
+#poster.noticeMode .dateZone{display:flex!important;top:194px!important;z-index:8!important}
+#poster.noticeMode .event1Zone{top:248px!important;height:110px!important}
+#poster.noticeMode .event2Zone{top:370px!important;height:120px!important}
+#poster.noticeMode .subtitleZone{top:505px!important;height:62px!important}
 </style>
 </head>
 <body>
@@ -1872,7 +1904,7 @@ function openExportMenu(target){
 }
 
 function showMenu(target,html){
-  const menu=document.getElementById("menu");menu.innerHTML=html;menu.style.display="block";menu.classList.toggle("fontEditMenu",html.includes("applyActiveFontFamily"));
+  const menu=document.getElementById("menu");menu.innerHTML=html;menu.style.display="block";menu.classList.toggle("fontEditMenu",html.includes("applyActiveFontFamily"));menu.classList.toggle("dateMenu",html.includes("dateMenuHeader"));
   ["position","left","right","top","bottom","max-height","overflow-y"].forEach(name=>menu.style.removeProperty(name));
   if(window.innerWidth<=760){
     const topbar=document.querySelector(".topbar"),top=menu.classList.contains("fontEditMenu")?0:Math.ceil(topbar?topbar.getBoundingClientRect().bottom+8:58);
@@ -2232,11 +2264,16 @@ function applyCharacterSize(value){
 function setSaleColor(c){document.getElementById("saleNumber").style.color=c;document.getElementById("salePercent").style.color=c;document.getElementById("saleText").style.color=c;}
 function setBg(c){document.getElementById("poster").style.setProperty("--point",c);}
 function setCharacter(i){if(chars[i]){const item=chars[i];document.getElementById("characterImg").src=(typeof item==="string"?item:item.src);}if(typeof hideMenu==="function"){hideMenu();}else{const menu=document.getElementById("menu");if(menu)menu.style.display="none";}}
+function removeEventDate(){
+  document.getElementById("dateText").textContent="";
+  schedulePosterHistory();
+  hideMenu();
+}
 
 function formatDate(v){const d=new Date(v+"T00:00:00");const days=["일","월","화","수","목","금","토"];return String(d.getMonth()+1).padStart(2,"0")+"."+String(d.getDate()).padStart(2,"0")+"("+days[d.getDay()]+")";}
 function dateMenu(target,e){
   if(e){e.stopPropagation();e.preventDefault();}
-  showMenu(target,`<div class="menuTitle">이벤트 날짜 선택</div><div class="menuRow"><label>시작일</label><input id="startDateInput" type="date"><label>종료일</label><input id="endDateInput" type="date"><button onclick="applyEventDate()">날짜 적용</button></div>`);
+  showMenu(target,`<div class="dateMenuHeader"><div class="menuTitle">이벤트 날짜 선택</div><button class="dateMenuApply" onclick="applyEventDate()">날짜 적용</button></div><div class="dateFields"><label for="startDateInput">시작일</label><input id="startDateInput" type="date"><label for="endDateInput">종료일</label><input id="endDateInput" type="date"></div><button class="dateMenuRemove" onclick="removeEventDate()">날짜 제거</button>`);
 }
 function applyEventDate(){
   const s=document.getElementById("startDateInput").value; const e=document.getElementById("endDateInput").value;
